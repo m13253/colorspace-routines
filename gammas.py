@@ -8,6 +8,8 @@ def HLG_OETF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 12] (ARIB STD-B67). If your input is in range [0, 1], multiply by 12.
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     r = 0.5
     a = 0.17883277
@@ -24,6 +26,8 @@ def HLG_EOTF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 12] (ARIB STD-B67). If you want to convert to [0, 1], divide by 12.
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     r = 0.5
     a = 0.17883277
@@ -40,6 +44,8 @@ def IPT_OETF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     buf_abs = np.abs(buf)
     return buf_abs**0.43 * np.sign(buf)
@@ -52,6 +58,8 @@ def IPT_EOTF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     buf_abs = np.abs(buf)
     return buf_abs**(1 / 0.43) * np.sign(buf)
@@ -64,6 +72,8 @@ def Lstar_EOTF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 100].
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     delta = 6 / 29
     buf_abs = np.abs(buf)
@@ -78,6 +88,8 @@ def Lstar_OETF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 100].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     delta = 6 / 29
     buf_abs = np.abs(buf)
@@ -92,6 +104,8 @@ def Oklab_OETF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     return np.cbrt(buf)
 
@@ -103,6 +117,8 @@ def Oklab_EOTF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 1].
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     return buf**3
 
@@ -114,6 +130,8 @@ def PQ_OETF(buf: np.ndarray) -> np.ndarray:
 
     Input range is [0, 10000], in unit cd/m^2.
     Output range is [0, 1].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     m1 = 2610 / 16384
     m2 = 2523 / 4096 * 128
@@ -131,6 +149,8 @@ def PQ_EOTF(buf: np.ndarray) -> np.ndarray:
 
     Output range is [0, 1].
     Input range is [0, 10000], in unit cd/m^2.
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     m1 = 2610 / 16384
     m2 = 2523 / 4096 * 128
@@ -148,6 +168,8 @@ def sRGB_OETF(buf: np.ndarray) -> np.ndarray:
 
     For sRGB and Display P3, input range is [0, 1], output range is [0, 1].
     For scRGB, input range is [-0.5, 7.5], output range is [-0.7353569830524495, 2.387650431415108].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     buf_abs = np.abs(buf)
     return np.where(buf_abs <= 0.0031308, 12.92 * buf_abs, 1.055 * buf_abs**(1 / 2.4) - 0.055) * np.sign(buf)
@@ -160,6 +182,8 @@ def sRGB_EOTF(buf: np.ndarray) -> np.ndarray:
 
     For sRGB and Display P3, input range is [0, 1], output range is [0, 1].
     For scRGB, input range is [-0.7353569830524495, 2.387650431415108], output range is [-0.5, 7.5].
+
+    In case of negative input, the function takes its absolute value and returns the negative output.
     '''
     buf_abs = np.abs(buf)
     return np.where(buf_abs <= 0.04045, buf_abs / 12.92, ((buf_abs + 0.055) / 1.055)**2.4) * np.sign(buf)
