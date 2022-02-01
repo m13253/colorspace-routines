@@ -24,6 +24,19 @@ forgetting to perform gamma-correction.
 - primaries.py: Relative colorimetric conversion between RGB-based color spaces (sRGB, P3, BT.2020, ACES).
 - whites.py: Relative colorimetric conversion between white points (aka. chromatic adaptation).
 
+## Example usage
+
+```python
+>>> from mpmath import mp
+>>> mp.prec = 53  # Set precision in bits, see below
+>>> from primaries import *
+>>> RGB_to_RGB(sRGB, ACES2065_1)
+matrix(
+[['0.439632981919491', '0.382988698151554', '0.177378319928955'],
+ ['0.0897764429588423', '0.813439428748981', '0.0967841282921771'],
+ ['0.0175411703831727', '0.111546553302387', '0.87091227631444']])
+```
+
 ## Missing features
 
 There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) because:
