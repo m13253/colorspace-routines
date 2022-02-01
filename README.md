@@ -29,7 +29,7 @@ forgetting to perform gamma-correction.
 There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) due to:
 - It is almost impossible to use an incorrect formula.
 - The conversion cannot be expressed with a single matrix.
-- You can [import colour](https://www.colour-science.org) to perform the conversion.
+- You can [`import colour`](https://www.colour-science.org) to perform the conversion.
 
 There is no support for CMYK colorspaces (FOGRA39, SWOP, etc.) due to:
 - It requires a look-up table.
