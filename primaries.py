@@ -4,6 +4,9 @@ import mpmath
 
 
 class Primaries:
+    '''
+    A set of primary colors (red, green, blue) and a white point for an RGB based color space.
+    '''
 
     def __init__(self, R: xy, G: xy, B: xy, W: xy):
         self.R = R

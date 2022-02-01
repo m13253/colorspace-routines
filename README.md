@@ -24,6 +24,18 @@ forgetting to perform gamma-correction.
 - primaries.py: Relative colorimetric conversion between RGB-based color spaces (sRGB, P3, BT.2020, ACES).
 - whites.py: Relative colorimetric conversion between white points (aka. chromatic adaptation).
 
+## Missing features
+
+There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) due to:
+- It is almost impossible to use an incorrect formula.
+- The conversion cannot be expressed with a single matrix.
+- You can [import colour](https://www.colour-science.org) to perform the conversion.
+
+There is no support for CMYK colorspaces (FOGRA39, SWOP, etc.) due to:
+- It requires a look-up table.
+- The interpolation step seems to be covered by a patent.
+- You might need to use [Little CMS](https://www.littlecms.com) or [Argyll CMS](http://www.argyllcms.com) for your need.
+
 ## Precision
 
 Most code in this repository relies on [mpmath](https://mpmath.org) to perform

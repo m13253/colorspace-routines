@@ -4,6 +4,11 @@ from mpmath import mpf
 
 
 class RGB:
+    '''
+    RGB based color coordinate.
+
+    Colorspace is not specified.
+    '''
 
     def __init__(self, R: mpf, G: mpf, B: mpf) -> None:
         self.R = mpf(R)
@@ -21,6 +26,11 @@ class RGB:
 
 
 class XYZ:
+    '''
+    CIE XYZ based color coordinate.
+
+    Chromatic adaption status is not specified.
+    '''
 
     def __init__(self, X: mpf, Y: mpf, Z: mpf) -> None:
         self.X = mpf(X)
@@ -51,6 +61,11 @@ class XYZ:
 
 
 class xy:
+    '''
+    CIE xy based color coordinate.
+
+    Chromatic adaption status is not specified.
+    '''
 
     def __init__(self, x: mpf, y: mpf) -> None:
         self.x = mpf(x)
@@ -75,6 +90,11 @@ class xy:
 
 
 class xyY:
+    '''
+    CIE xyY based color coordinate.
+
+    Chromatic adaption status is not specified.
+    '''
 
     def __init__(self, x: mpf, y: mpf, Y: mpf) -> None:
         self.x = mpf(x)
