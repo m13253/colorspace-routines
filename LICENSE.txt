@@ -1,3 +1,4 @@
 Public Domain
 
-Unless stated in the source code or restricted by applicable law,
+Unless stated in the source code or restricted by applicable law, the code
+released in this repository is donated to the public domain.
