@@ -32,9 +32,9 @@ There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.githu
 - You can [`import colour`](https://www.colour-science.org) to perform the conversion.
 
 There is no support for CMYK colorspaces (FOGRA39, SWOP, etc.) due to:
-- It requires a look-up table.
+- CMYK is too complex. It requires a look-up table and formulas for dot-gain.
 - The interpolation step seems to be covered by a patent.
-- You might need to use [Little CMS](https://www.littlecms.com) or [Argyll CMS](http://www.argyllcms.com) for your need.
+- You might need to use [Little CMS](https://www.littlecms.com) or [Argyll CMS](http://www.argyllcms.com).
 
 ## Precision
 
