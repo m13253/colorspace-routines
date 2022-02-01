@@ -33,6 +33,30 @@ def HLG_EOTF(buf: np.ndarray) -> np.ndarray:
     return np.where(buf_abs <= r, np.square(buf_abs / r), np.exp((buf_abs - c) / a) + b) * np.sign(buf)
 
 
+# https://scholarworks.rit.edu/theses/2858/
+def IPT_OETF(buf: np.ndarray) -> np.ndarray:
+    '''
+    OETF curve for IPT.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    buf_abs = np.abs(buf)
+    return buf_abs**0.43 * np.sign(buf)
+
+
+# https://scholarworks.rit.edu/theses/2858/
+def IPT_EOTF(buf: np.ndarray) -> np.ndarray:
+    '''
+    EOTF curve for IPT.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    buf_abs = np.abs(buf)
+    return buf_abs**(1 / 0.43) * np.sign(buf)
+
+
 # http://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1
 def Lstar_EOTF(buf: np.ndarray) -> np.ndarray:
     '''
@@ -59,30 +83,6 @@ def Lstar_OETF(buf: np.ndarray) -> np.ndarray:
     buf_abs = np.abs(buf)
     f = np.where(buf_abs <= delta**3, buf_abs / (3 * np.square(delta)) + 4 / 29, np.cbrt(buf_abs))
     return (116 * f - 16) * np.sign(buf)
-
-
-# https://scholarworks.rit.edu/theses/2858/
-def IPT_OETF(buf: np.ndarray) -> np.ndarray:
-    '''
-    OETF curve for IPT.
-
-    Input range is [0, 1].
-    Output range is [0, 1].
-    '''
-    buf_abs = np.abs(buf)
-    return buf_abs**0.43 * np.sign(buf)
-
-
-# https://scholarworks.rit.edu/theses/2858/
-def IPT_EOTF(buf: np.ndarray) -> np.ndarray:
-    '''
-    EOTF curve for IPT.
-
-    Input range is [0, 1].
-    Output range is [0, 1].
-    '''
-    buf_abs = np.abs(buf)
-    return buf_abs**(1 / 0.43) * np.sign(buf)
 
 
 # https://bottosson.github.io/posts/oklab/
