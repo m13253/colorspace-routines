@@ -33,6 +33,80 @@ def HLG_EOTF(buf: np.ndarray) -> np.ndarray:
     return np.where(buf_abs <= r, np.square(buf_abs / r), np.exp((buf_abs - c) / a) + b) * np.sign(buf)
 
 
+# http://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1
+def Lstar_EOTF(buf: np.ndarray) -> np.ndarray:
+    '''
+    EOTF curve for L* (CIE L*a*b*).
+
+    Input range is [0, 100].
+    Output range is [0, 1].
+    '''
+    delta = 6 / 29
+    buf_abs = np.abs(buf)
+    f = (buf_abs + 16) / 116
+    return np.where(f <= delta, (f - 4 / 29) * (3 * np.square(delta)), f**3) * np.sign(buf)
+
+
+# http://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1
+def Lstar_OETF(buf: np.ndarray) -> np.ndarray:
+    '''
+    OETF curve for L* (CIE L*a*b*).
+
+    Input range is [0, 1].
+    Output range is [0, 100].
+    '''
+    delta = 6 / 29
+    buf_abs = np.abs(buf)
+    f = np.where(buf_abs <= delta**3, buf_abs / (3 * np.square(delta)) + 4 / 29, np.cbrt(buf_abs))
+    return (116 * f - 16) * np.sign(buf)
+
+
+# https://scholarworks.rit.edu/theses/2858/
+def IPT_OETF(buf: np.ndarray) -> np.ndarray:
+    '''
+    OETF curve for IPT.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    buf_abs = np.abs(buf)
+    return buf_abs**0.43 * np.sign(buf)
+
+
+# https://scholarworks.rit.edu/theses/2858/
+def IPT_EOTF(buf: np.ndarray) -> np.ndarray:
+    '''
+    EOTF curve for IPT.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    buf_abs = np.abs(buf)
+    return buf_abs**(1 / 0.43) * np.sign(buf)
+
+
+# https://bottosson.github.io/posts/oklab/
+def Oklab_OETF(buf: np.ndarray) -> np.ndarray:
+    '''
+    OETF curve for Oklab.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    return np.cbrt(buf)
+
+
+# https://bottosson.github.io/posts/oklab/
+def Oklab_EOTF(buf: np.ndarray) -> np.ndarray:
+    '''
+    EOTF curve for Oklab.
+
+    Input range is [0, 1].
+    Output range is [0, 1].
+    '''
+    return buf**3
+
+
 # https://www.itu.int/rec/R-REC-BT.2100
 def PQ_OETF(buf: np.ndarray) -> np.ndarray:
     '''
@@ -67,7 +141,7 @@ def PQ_EOTF(buf: np.ndarray) -> np.ndarray:
 
 
 # https://www.w3.org/TR/css-color-4/#color-conversion-code
-def scRGB_OETF(buf: np.ndarray) -> np.ndarray:
+def sRGB_OETF(buf: np.ndarray) -> np.ndarray:
     '''
     OETF curve for scRGB, sRGB, Display P3, etc.
 
@@ -79,7 +153,7 @@ def scRGB_OETF(buf: np.ndarray) -> np.ndarray:
 
 
 # https://www.w3.org/TR/css-color-4/#color-conversion-code
-def scRGB_EOTF(buf: np.ndarray) -> np.ndarray:
+def sRGB_EOTF(buf: np.ndarray) -> np.ndarray:
     '''
     EOTF curve for scRGB, sRGB, Display P3, etc.
 

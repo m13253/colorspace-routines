@@ -46,7 +46,7 @@ matrix(
 
 ## Missing features
 
-There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) because:
+There is no support for LAB colorspaces (CIELAB, [Oklab](https://bottosson.github.io/posts/oklab/)) because:
 - It is almost impossible to use an incorrect formula.
 - The conversion cannot be expressed with a single matrix.
 - You can [`import colour`](https://www.colour-science.org) to perform the conversion.
