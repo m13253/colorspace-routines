@@ -26,14 +26,13 @@ forgetting to perform gamma-correction.
 
 ## Missing features
 
-There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) due to:
+There is no support for LAB colorspaces (CIELAB, [OkLAB](https://bottosson.github.io/posts/oklab/)) because:
 - It is almost impossible to use an incorrect formula.
 - The conversion cannot be expressed with a single matrix.
 - You can [`import colour`](https://www.colour-science.org) to perform the conversion.
 
-There is no support for CMYK colorspaces (FOGRA39, SWOP, etc.) due to:
-- CMYK is too complex. It requires a look-up table and formulas for dot-gain.
-- The interpolation step seems to be covered by a patent.
+There is no support for CMYK colorspaces (FOGRA39, SWOP, etc.) because:
+- CMYK is too complicated. It requires a look-up table, [Sakamoto's interpolation method](https://patents.google.com/patent/US6178007B1) and complex formulas for calculating dot-gain.
 - You might need to use [Little CMS](https://www.littlecms.com) or [Argyll CMS](http://www.argyllcms.com).
 
 ## Precision
