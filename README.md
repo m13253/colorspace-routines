@@ -67,4 +67,4 @@ code into your own software, feel free to lower the precision to 53-bit,
 32-bit, or even 24-bit.
 
 Note: Code in `gammas.py` uses standard 53-bit precision only, in order to be
-compatible with `numpy`.
+compatible with [numpy](https://numpy.org).
