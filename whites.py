@@ -1,13 +1,23 @@
-from coords import xy
+from coords import xy, XYZ
 import mpmath
 
+# D50, rounding XYZ values to 4 significant digits
+# https://color.org/whyd50.xalter
+PCS = XYZ('96.42', '100', '82.49').to_xy()
+
+# D50, rounding xy values to 4 significant digits
 # https://www.color.org/chardata/rgb/ROMMRGB.xalter
 D50 = xy('0.3457', '0.3585')
+
+# D65, rounding xy values to 4 significant digits
 # https://www.color.org/chardata/rgb/sRGB.xalter
 D65 = xy('0.3127', '0.3290')
+
+# ACES D60-like white point, not exactly D60
 # https://j.mp/TB-2018-001
 # https://acescentral.com/aces-documentation/
 ACES = xy('0.32168', '0.33767')
+
 # https://www.color.org/chardata/rgb/DCIP3.xalter
 DCI = xy('0.3140', '0.3510')
 
