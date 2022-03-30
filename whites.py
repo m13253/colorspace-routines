@@ -3,7 +3,7 @@ import mpmath
 
 # D50, rounding XYZ values to 4 significant digits
 # https://color.org/whyd50.xalter
-PCS = XYZ('96.42', '100', '82.49').to_xy()
+PCS = XYZ('96.42', '100', '82.49')
 
 # D50, rounding xy values to 4 significant digits
 # https://www.color.org/chardata/rgb/ROMMRGB.xalter
