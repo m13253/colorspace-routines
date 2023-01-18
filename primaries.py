@@ -15,7 +15,7 @@ class Primaries:
         self.W = W
 
 
-# http://j.mp/TB-2014-004
+# https://j.mp/TB-2014-004
 # https://acescentral.com/aces-documentation/
 ACES2065_1 = Primaries(
     R=xy('0.73470', '0.26530'),
@@ -23,7 +23,7 @@ ACES2065_1 = Primaries(
     B=xy('0.00010', '-0.07700'),
     W=whites.ACES,
 )
-# http://j.mp/S-2014-004
+# https://j.mp/S-2014-004
 # https://acescentral.com/aces-documentation/
 ACEScg = Primaries(
     R=xy('0.713', '0.293'),
